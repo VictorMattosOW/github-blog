@@ -1,0 +1,11 @@
+body {
+  background-color: #040f19;
+}
+
+body, h1, h2, h3, p {
+  font-family: 'Nunito', sans-serif;
+}
+
+::placeholder {
+  font-family: 'Nunito', sans-serif;
+}
