@@ -1,4 +1,4 @@
-import { Card } from "../Card.index";
+import { Card } from "../Card/Card.index";
 
 export function Feed() {
   return (
