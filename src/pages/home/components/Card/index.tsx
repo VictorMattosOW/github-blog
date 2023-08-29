@@ -2,9 +2,9 @@ import { Buildings, GithubLogo, Users } from "@phosphor-icons/react";
 
 export function Card() {
   return (
-    <header className="w-full h-[212px] bg-[#0B1B2B] mt-[-80px] px-10 py-8 relative rounded-2xl grid grid-cols-[25%,1fr]">
+    <header className="max-h-[212px] bg-[#0B1B2B] mt-[-80px] px-10 py-8 relative rounded-2xl grid grid-cols-[25%,1fr]">
       <img
-        className="w-[148px] h-[148px] rounded-lg"
+        className="max-h-[148px] m-h-[148px] rounded-lg"
         src="https://github.com/victorMattosOW.png"
         alt=""
       />

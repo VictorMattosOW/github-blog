@@ -3,7 +3,7 @@ import { Feed } from "./components/Feed";
 
 export function Home() {
   return (
-    <div className="h-full w-[864px] mt-[-30]">
+    <div>
       <Card />
       <Feed />
     </div>
