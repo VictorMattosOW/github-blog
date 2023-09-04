@@ -9,26 +9,28 @@ import { useContext } from 'react'
 import { PostsContext } from '../../../contexts/PostsContext'
 import { formatDistanceToNow } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
+import { Link } from 'react-router-dom'
 
 export function Card() {
   const { selectedPost } = useContext(PostsContext)
+
   return (
     <header className="h-[168px] bg-[#0B1B2B] mt-[-80px] p-8 py-8 rounded-2xl grid grid-rows-3 gap-2">
       <div className="flex justify-between items-center">
-        <a
-          href=""
+        <Link
+          to={'/'}
           className="text-[#3294F8] text-sm flex gap-1 items-center border-none hover:border-[#3294F8] hover:border-b-2 hover:border-solid"
         >
           <CaretLeft size={16} />
           Voltar
-        </a>
-        <a
-          href=""
+        </Link>
+        <Link
+          to={selectedPost.url}
           className="text-[#3294F8] text-xs flex gap-1 items-center border-none hover:border-[#3294F8] hover:border-b-2 hover:border-solid"
         >
           VER NO GITHUB
           <ArrowSquareUpRight size={16} />
-        </a>
+        </Link>
       </div>
 
       <h1 className="text-[#E7EDF4] text-2xl">{selectedPost.title}</h1>

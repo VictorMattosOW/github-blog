@@ -16,6 +16,7 @@ export interface Post {
   post: string
   createdAt: string
   id: number
+  url: string
 }
 
 interface PostsContextType {
@@ -54,6 +55,7 @@ export function PostsProvider({ children }: PostsProviderProps) {
           post: posts.body,
           createdAt: posts.created_at,
           id: posts.id,
+          url: posts.html_url,
         }
         object[index] = objPost
         return object
