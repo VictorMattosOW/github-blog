@@ -1,10 +1,10 @@
-import { Card } from "./components/Card";
-import { Feed } from "./components/Feed";
+import { Feed } from './components/Feed'
+import { Header } from './components/Header'
 
 export function Home() {
   return (
     <div>
-      <Card />
+      <Header />
       <Feed />
     </div>
   )

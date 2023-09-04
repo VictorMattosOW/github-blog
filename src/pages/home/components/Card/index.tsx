@@ -1,42 +1,33 @@
-import { Buildings, GithubLogo, Users } from "@phosphor-icons/react";
+import { Post, PostsContext } from '../../../../contexts/PostsContext'
+import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { formatDistanceToNow } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
 
-export function Card() {
+interface CardProps {
+  post: Post
+}
+
+export function Card({ post }: CardProps) {
+  const { handleSelectedPost } = useContext(PostsContext)
   return (
-    <header className="max-h-[212px] bg-[#0B1B2B] mt-[-80px] px-10 py-8 relative rounded-2xl grid grid-cols-[25%,1fr]">
-      <img
-        className="max-h-[148px] m-h-[148px] rounded-lg"
-        src="https://github.com/victorMattosOW.png"
-        alt=""
-      />
-      <div>
-        <div className="flex justify-between items-center">
-          <h1 className="text-[#E7EDF4] text-2xl">victor Robaina de Mattos</h1>
-          <a
-            href=""
-            className="text-[#3294F8] border-none hover:border-[#3294F8] hover:border-b-2 hover:border-solid"
-          >
-            GITHUB
-          </a>
-        </div>
-        <p className="text-[#AFC2D4] text-base mt-2 mb-8">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, id
-          dolores. Voluptatibus, et fugiat consectetur debitis quasi doloremque.
-        </p>
-        <div className="flex gap-6">
-          <div className="flex gap-2 items-center text-[#C4D4E3]">
-            <GithubLogo size={20} />
-            <p className="text-base">victormattosOW</p>
-          </div>
-          <div className="flex gap-2 items-center text-[#C4D4E3]">
-            <Buildings size={20} />
-            <p className="text-base">rocketseat</p>
-          </div>
-          <div className="flex gap-2 items-center text-[#C4D4E3]">
-            <Users size={20} /> 
-            <p className="text-base">32 seguidores</p>
-          </div>
-        </div>
+    <div className="h-[260px] bg-[#112131] grid grid-cols-1 grid-rows-[auto,1fr] gap-5 rounded-xl p-8">
+      <div className="grid grid-cols-[1fr,20%] justify-between">
+        <Link
+          to={'/post'}
+          onClick={() => handleSelectedPost(post)}
+          className="text-[#E7EDF4] text-xl hover:underline hover:underline-offset-4 hover:decoration-solid hover:underline-[#E7EDF4]"
+        >
+          {post.title}
+        </Link>
+        <time className="text-sm text-[#7B96B2] justify-self-end mt-1">
+          {formatDistanceToNow(new Date(post.createdAt), {
+            addSuffix: true,
+            locale: ptBR,
+          })}
+        </time>
       </div>
-    </header>
-  );
+      <p className="text-[#AFC2D4] line-clamp-5">{post.post}</p>
+    </div>
+  )
 }

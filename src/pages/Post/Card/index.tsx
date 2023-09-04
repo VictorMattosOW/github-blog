@@ -4,9 +4,14 @@ import {
   CaretLeft,
   ChatCircle,
   GithubLogo,
-} from "@phosphor-icons/react";
+} from '@phosphor-icons/react'
+import { useContext } from 'react'
+import { PostsContext } from '../../../contexts/PostsContext'
+import { formatDistanceToNow } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
 
 export function Card() {
+  const { selectedPost } = useContext(PostsContext)
   return (
     <header className="h-[168px] bg-[#0B1B2B] mt-[-80px] p-8 py-8 rounded-2xl grid grid-rows-3 gap-2">
       <div className="flex justify-between items-center">
@@ -25,11 +30,9 @@ export function Card() {
           <ArrowSquareUpRight size={16} />
         </a>
       </div>
-      
-      <h1 className="text-[#E7EDF4] text-2xl">
-        JavaScript data types and data structures
-      </h1>
-      
+
+      <h1 className="text-[#E7EDF4] text-2xl">{selectedPost.title}</h1>
+
       <div className="flex gap-6 text-[#7B96B2]">
         <div className="flex gap-2 items-center">
           <GithubLogo size={20} />
@@ -37,13 +40,18 @@ export function Card() {
         </div>
         <div className="flex gap-2 items-center">
           <Calendar size={20} />
-          <p className="text-base">Há 1 dia</p>
+          <time className="text-base">
+            {formatDistanceToNow(new Date(selectedPost.createdAt), {
+              addSuffix: true,
+              locale: ptBR,
+            })}
+          </time>
         </div>
         <div className="flex gap-2 items-center">
-          <ChatCircle size={20} weight="fill"/>
+          <ChatCircle size={20} weight="fill" />
           <p className="text-base">5 comentários</p>
         </div>
       </div>
     </header>
-  );
+  )
 }
